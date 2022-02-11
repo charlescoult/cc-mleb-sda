@@ -42,38 +42,6 @@ def downloadAudio( videoId ):
             url,
         ] )
 
-    index_fn = "data/index.json"
-
-    # Update data/index.json
-
-    # ensure file exists and is readable and create it if not
-    if not ( os.path.isfile( index_fn ) and os.access( index_fn, os.R_OK ) ):
-        with open( index_fn, 'w+' ) as index_file:
-            json.dump( {
-                'files': [],
-            }, index_file, indent = 4 )
-
-    # Read existing
-    with open( index_fn, 'r' ) as index_file:
-        index_data = json.load( index_file )
-
-    # if existing data already contains this file, delete the old before adding
-    # the new metadata
-    index_data["files"] = list( filter( lambda a: a["yt_id"] != videoId, index_data["files"] ) )
-
-    # add the new metadata
-    index_data["files"].append( {
-        "name": "",
-        "yt_id": videoId,
-        "filename": "",
-        "subtitle": "",
-        "processing": [],
-    } )
-
-    # Overwrite existing file with new file with modified data
-    with open( "data/index.json", "w" ) as index:
-        json.dump( index_data, index, indent = 4 )
-
 if __name__ == '__main__':
     for videoId in sys.argv[1:]:
         downloadAudio( videoId )
