@@ -9,7 +9,7 @@ from pydub import AudioSegment
 Assumes file is less than 24 hrs in length.
 '''
 
-MS_PAD = 0
+MS_PAD = 0 # number of milliseconds to pad on either side of each split
 
 def parse_to_ms( timestr ):
     timestr = timestr + '000'
