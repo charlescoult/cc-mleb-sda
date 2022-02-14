@@ -10,7 +10,6 @@ import librosa
 
 import webrtcvad
 
-
 vad = webrtcvad.Vad( 2 )
 
 '''
@@ -57,12 +56,12 @@ def split_pydub( videoId ):
         start = parse_to_ms( caption.start )
         end = parse_to_ms( caption.end )
 
+        split_fn = folder_dn + ( '/%s.split.%08d-%08d' % ( videoId, start, end ) )
+        print( "Generating %s" % split_fn )
+
         if ( start < MS_PAD ): start = 0
         split = full_audio[ start - MS_PAD : end + MS_PAD ]
         split.export( split_fn + '.wav', format='wav' )
-
-        split_fn = folder_dn + ( '/%s.split.%08d-%08d' % ( videoId, start, end ) )
-        print( "Generating %s" % split_fn )
 
         # parse caption text and generate associated text file
         lines = caption.text.split('\n')
@@ -116,7 +115,10 @@ def split_librosa( videoId ):
 
     print( "Done." )
 
+# use pydub for default
+split = split_pydub
 
+# for testing
 if __name__ == '__main__':
     for videoId in sys.argv[1:]:
         split_librosa( videoId )

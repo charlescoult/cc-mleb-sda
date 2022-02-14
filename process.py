@@ -1,6 +1,6 @@
 import sys
-import downloadYT
-import split
+import src.downloadYT as downloadYT
+import src.split as split
 
 def process( videoId ):
     downloadYT.downloadAudio( videoId )
