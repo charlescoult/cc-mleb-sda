@@ -1,5 +1,6 @@
-voice_isolate/pretrained_models
+src/voice_isolate/pretrained_models
 data/
 
-
 __pycache__/
+src/__pycache__/
+

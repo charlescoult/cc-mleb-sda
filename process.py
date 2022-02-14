@@ -4,6 +4,7 @@ import split
 
 def process( videoId ):
     downloadYT.downloadAudio( videoId )
+    # TODO: add voice isolation here
     split.split( videoId )
 
 if __name__ == '__main__':
