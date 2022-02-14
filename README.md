@@ -8,4 +8,4 @@
   * `7z x data.7z`
 * Add to processed data (from YouTube)
   * `python process.py <YouTube video UID>`
-		* `<YouTube video UID>` can be found in the YouTube video's URL: `https://www.youtube.com/watch?v=<YouTube video UID>`
+    * `<YouTube video UID>` can be found in the YouTube video's URL: `https://www.youtube.com/watch?v=<YouTube video UID>`
